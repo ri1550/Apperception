@@ -1,4 +1,4 @@
 /target
 /development/references/*
-!/development/references/README.md
+!/development/references/*.md
 !/development/references/fetch.sh

@@ -1,0 +1,3 @@
+# `cargo poly <command>` runs the workspace checks in tools/poly (see its README).
+[alias]
+poly = "run --quiet --package poly --"

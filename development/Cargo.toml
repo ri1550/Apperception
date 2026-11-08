@@ -1,0 +1,13 @@
+[package]
+name = "development"
+description = "Scratch crate for poking at bricks; nothing here is a deliverable"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+publish.workspace = true
+
+# Add the bricks you want to poke at, e.g. `apperception-greeting.workspace = true`.
+[dependencies]
+
+[lints]
+workspace = true

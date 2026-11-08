@@ -1,0 +1,13 @@
+[package]
+name = "hello"
+description = "Example project: the api base as a binary"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+publish.workspace = true
+
+[dependencies]
+apperception-api.workspace = true
+
+[lints]
+workspace = true

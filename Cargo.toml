@@ -1,0 +1,30 @@
+# The workspace: one Cargo workspace holds every brick, project and tool, so the
+# whole codebase builds, tests and lints as one unit (ADR-0004). Bricks are crates
+# under components/ and bases/, projects under projects/, each declared once below
+# in [workspace.dependencies] so consumers write `apperception-greeting.workspace = true`.
+
+[workspace]
+resolver = "3"
+members = ["components/*", "bases/*", "projects/*", "development", "tools/poly"]
+exclude = ["development/references"]
+
+[workspace.package]
+version = "0.1.0"
+edition = "2024"
+license = "MIT"
+publish = false
+
+# The Polylith namespace: every component and base is a crate named
+# `<namespace>-<brick>`, so brick names never collide with crates.io names.
+# `cargo poly check` enforces it. To use your own, change it here and rename the
+# crates in components/ and bases/ to match (see CONTRIBUTING.md).
+[workspace.metadata.polylith]
+namespace = "apperception"
+
+# Every brick, declared once. A consumer adds `apperception-<brick>.workspace = true`.
+[workspace.dependencies]
+apperception-greeting = { path = "components/greeting" }
+apperception-api = { path = "bases/api" }
+
+[workspace.lints.rust]
+unsafe_code = "deny"

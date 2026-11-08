@@ -1,0 +1,16 @@
+{
+  "hooks": {
+    "SessionStart": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "cd \"${CLAUDE_PROJECT_DIR:-.}\" && cargo poly spec status 2>/dev/null || true",
+            "timeout": 120,
+            "statusMessage": "Reading the spec status and the queue"
+          }
+        ]
+      }
+    ]
+  }
+}

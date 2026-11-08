@@ -1,0 +1,49 @@
+#!/bin/sh
+# The local layer of the enforcement system. Runs on every `git commit` once you
+# have turned it on for this clone:
+#
+#     git config core.hooksPath .githooks
+#
+# To run everything by hand:
+#
+#     .githooks/pre-commit
+#
+# A failing step stops the commit and its output says what to fix. CI runs the same
+# checks plus the tests and a dependency audit (.github/workflows/checks.yml); this
+# is the fast warning, CI is the gate. See CONTRIBUTING.md for what each step means.
+set -eu
+cd "$(git rev-parse --show-toplevel)"
+
+step() { printf '\n==> %s\n' "$1"; }
+
+step "Format (cargo fmt --check)"
+cargo fmt --all --check
+
+step "Polylith check (brick boundaries and interfaces)"
+cargo poly check
+
+step "ADR front matter lint"
+cargo poly adr lint
+
+step "Spec and queue lint"
+cargo poly spec lint
+
+# Keeps the per-brick ADR index current whenever a decision record is staged, and
+# stages the regenerated files for you. Not enforced in CI: parallel branches that
+# both add ADRs would conflict on the generated files.
+if git diff --cached --name-only | grep -q '^docs/adr/.*\.md$'; then
+  step "Refresh the ADR index"
+  cargo poly adr index
+  git add docs/adr/index
+fi
+
+step "Lint (cargo clippy, warnings are errors)"
+cargo clippy --workspace --all-targets --quiet -- -D warnings
+
+# Only warns; never blocks a commit. The hard gate is the CI version.
+step "Interface change heads-up (does not block locally)"
+cargo poly interface --mode pre-commit
+
+# Always last, so the reminder lands in context just before the commit.
+echo
+cargo poly remind

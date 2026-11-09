@@ -6,7 +6,7 @@ I have put my own recommendation after questions where I have one. They are opin
 
 ## Decisions that shape everything else
 
-These five are not a domain. They are the answers every domain depends on, so they come first.
+These five are not a domain. They are the answers every domain depends on, so they come first. Progress is tracked in `design-tree.md`: decision 4 was settled on 2026-11-09 (see its closing statement there) and decision 1 is being worked; the text below is the original framing.
 
 1. What is the source of truth? Obsidian: a folder of Markdown files, with a rebuildable cache. Atomic: a SQLite database, Markdown as content. The choice decides whether a user can point Apperception at an existing Obsidian vault, whether Dropbox-style sync works for free, and whether every feature has to survive the files changing under it. Recommendation: files are the truth, exactly as Obsidian, with one derived index that can be deleted at any time. This is the one property that made Obsidian trustworthy and it costs nothing to keep if decided now and everything to retrofit.
 

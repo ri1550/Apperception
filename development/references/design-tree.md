@@ -189,3 +189,7 @@ Following slices, reorderable: (2) live preview polish, splits, graph; (3) seman
 Prototypes and ADRs are scheduled only when needed, not up front (BSSN). The template's `greeting` example bricks and spec domain are deleted when the first real brick lands.
 
 All five top-level decisions are closed. Next: agree the domain list and the brick list (see `domain-and-brick-plan.md`).
+
+## Brick review and plan confirmation (2026-11-11)
+
+A six-agent review (three lenses, one reconciliation, two adversarial checks) verified the brick list; the result is in `domain-and-brick-plan.md`. Storage and vault merge into one `vault` component. The developer then settled: `settings` separate; `tag` a brick; domain name `discovery`; plural domains against singular bricks; truth schema owned by `vault`; five properties (`kind` dropped: one atom kind, add later if needed); fuzzy ranking's slice unknown. Next: create the twelve slice-1 domain files and the glossary draft.

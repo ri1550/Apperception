@@ -83,3 +83,27 @@ Statement of the reason to exist, as settled. Apperception is an open-source, si
 # Design tree: source of truth (top-level decision 1)
 
 Root, stated by the developer: "Atomic is our truth." The database is the source of truth; plain-text files are import and export, not storage.
+
+## Round 1 of decision 1 (settled 2026-11-11)
+
+Engine. SQLite only.
+
+Vault on disk. Provisionally a self-contained directory, as Obsidian does. Needs prototyping, testing and an ADR before it is final. Internal source storage (58), single versus split database files (59, two files most likely), concurrent access (77) and backup and sync (78) all hang off that prototype and ADR.
+
+Registry. A registry outside any vault, most likely a SQLite file in the XDG data directory.
+
+Scale. The developer's previous vault was thousands of files and 1.1 million words. Apperception must handle vaults of multiple millions of words.
+
+Round trip. One atom exports as one Markdown file with YAML frontmatter carrying its properties; the atom body is Markdown in the database. Titles are unique within a vault. The exported filename is `<title>.md` with the ID in frontmatter. Inside the app, links are made by atom title, as in Obsidian; on export they are written as `[[title]]`. Export then import yields an identical knowledge base, and the spec will pin that with a test. Export is on demand, with an opt-in per-vault mirror folder for git-friendly plain-text tracking. Exported or mirrored files are never read back automatically; import is always explicit. Knowledge is always exported; source and synthetic material are optional exports.
+
+Import. There are no folders in Apperception; an imported folder path becomes a tag path unless a better scheme appears. Frontmatter that Apperception has not defined and cannot use is dropped on import; the developer notes this cuts against the ownership rule and accepts it to avoid future design problems. Attachments on import (74): deferred. Whether properties are stored structured or as frontmatter text (63): deferred.
+
+Fleeting notes are gone. The fleeting versus permanent distinction is dropped. There are only linked and orphaned notes: an orphaned note has no links, and linking it to another note stops it being orphaned. This reshapes rounds 2 and 3: the promotion trigger (54) is resolved because the status is derived from links, and the "fleeting behaviour" settings (27) become settings for surfacing orphaned notes.
+
+History. Some form of atom history is wanted; which design is a prototype-and-ADR question. Flagged as important: it must be resolved before it becomes impossible to add for past data, that is, before the first real vault is written.
+
+Deletion. Trash with configurable retention; permanent deletion is an explicit second act by default.
+
+Encryption at rest. Left to the OS; may be reopened.
+
+Items the developer has marked for prototype, test and ADR: 57 vault layout, 58 source storage, 59 database split, 75 history, 77 concurrency, 78 backup and sync.

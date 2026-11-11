@@ -107,3 +107,21 @@ Deletion. Trash with configurable retention; permanent deletion is an explicit s
 Encryption at rest. Left to the OS; may be reopened.
 
 Items the developer has marked for prototype, test and ADR: 57 vault layout, 58 source storage, 59 database split, 75 history, 77 concurrency, 78 backup and sync.
+
+## Round 2 of decision 1 (settled 2026-11-11) and closure of "source of truth"
+
+Orphaned. Confirmed: atom kinds no longer include fleeting; the name-as-rule is connected versus orphaned; the old fleeting-behaviour settings become settings for surfacing orphaned atoms; the promotion trigger is gone because orphaned is derived. An atom is orphaned when it has no atom-to-atom links in either direction. Links to source material and tags do not count.
+
+Links by title. Renaming an atom rewrites the link text in every atom that links to it, automatically and silently, as Obsidian does. An atom may link to a title that does not exist; activating that link creates the atom; unresolved links appear in the graph. Title constraints (filename-safe on every OS, no `# ^ |`, length ceiling) are enforced at creation and at rename.
+
+Import. A file whose frontmatter ID already exists updates that atom in place, but the user is shown both versions side by side and accepts or denies the update, like a file-manager overwrite prompt. Kind is a frontmatter property on export and import; files without it become plain notes. No report of dropped frontmatter.
+
+Speed. Opening a vault: about three seconds at most. Opening an atom: instant. Writing in an atom: no delay. Search: a small delay is acceptable. Overall target is Obsidian's feel.
+
+Parked. Literature notes and molecules are parked as future ideas. For now there is one atom kind, the note. The manual canvas (49) was defined as a molecule and is parked with it.
+
+Open at closure: properties structured versus frontmatter text (63); attachments on import (74); the prototype-and-ADR list (57, 58, 59, 75, 77, 78).
+
+# Design tree: Obsidian compatibility (top-level decision 2)
+
+Root: how far Apperception matches Obsidian's on-disk format and behaviour. Already narrowed by decision 1: the body is Obsidian-flavoured Markdown, export is `<title>.md` with frontmatter and `[[title]]` links, import reads Obsidian vaults with folders becoming tag paths, and there is no shared live folder because the database is the truth.

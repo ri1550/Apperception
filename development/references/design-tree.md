@@ -125,3 +125,25 @@ Open at closure: properties structured versus frontmatter text (63); attachments
 # Design tree: Obsidian compatibility (top-level decision 2)
 
 Root: how far Apperception matches Obsidian's on-disk format and behaviour. Already narrowed by decision 1: the body is Obsidian-flavoured Markdown, export is `<title>.md` with frontmatter and `[[title]]` links, import reads Obsidian vaults with folders becoming tag paths, and there is no shared live folder because the database is the truth.
+
+## Round 1 of decision 2 (settled 2026-11-11) and closure of "Obsidian compatibility"
+
+Level: same Markdown flavour only. No reading of `.obsidian/` configuration, no running of Obsidian plugins. The opt-in mirror folder is a folder Obsidian can open as-is, and Apperception writes nothing Obsidian-specific into it.
+
+Importers: plain Markdown folders only. Users export from other apps to Markdown first.
+
+Links: every Obsidian link construct round-trips exactly: `[[title|alias]]`, `[[title#heading]]`, `[[title#^block]]` with `^block-id` markers, `![[...]]` embeds of atoms and source files, and `[text](title.md)` Markdown links. Link features match Obsidian's.
+
+Tags: a `#tag` in the body is included in the atom's `tags` property, which is where tags are tracked; same grammar as Obsidian. The developer has further ideas about tags to raise during building.
+
+Aliases: only the per-link display text `[[title|alias]]`, which is local to that atom body. There is no `aliases` property and no alias uniqueness.
+
+Other Obsidian extensions (callouts, highlights, comments, footnotes, task lists, math, tables, Mermaid): all preserved exactly; all rendered except Mermaid, which is deferred to the rendering domain.
+
+Defined properties: `id`, `title`, `created`, `modified`, `tags`. Nothing else survives import.
+
+`.canvas` and `.base` files: skipped on import. The developer wants an Apperception canvas system later.
+
+Default keymap: copy Obsidian's (or Atomic's) hotkeys where the same action exists; expected to change later. No `obsidian://` handling; only Apperception's own scheme, if any.
+
+Frontier empty at closure. Nothing deferred.

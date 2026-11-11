@@ -147,3 +147,17 @@ Defined properties: `id`, `title`, `created`, `modified`, `tags`. Nothing else s
 Default keymap: copy Obsidian's (or Atomic's) hotkeys where the same action exists; expected to change later. No `obsidian://` handling; only Apperception's own scheme, if any.
 
 Frontier empty at closure. Nothing deferred.
+
+# Design tree: UI technology (top-level decision 3)
+
+Facts found before round 1 (2026-11-11).
+
+The developer's machine: Arch Linux, Hyprland on Wayland, NVIDIA RTX 3070, webkit2gtk-4.1 2.52.6 installed, Rust 1.98, Node 26.
+
+Tauri 2 on Linux renders through WebKitGTK. NVIDIA plus Wayland is the known bad case: blank windows, flicker, and "Error 71 (Protocol error) dispatching to Wayland display" from the DMA-BUF renderer requesting buffer formats the NVIDIA driver lacks. Tauri documents workarounds (`WEBKIT_DISABLE_DMABUF_RENDERER=1`, `__NV_DISABLE_EXPLICIT_SYNC=1`), and NVIDIA drivers 555+ with explicit sync remove the crash on current stacks. Sources: https://v2.tauri.app/develop/debug/linux-graphics/ , https://github.com/tauri-apps/tauri/issues/9394 .
+
+Tauri 3.0.0-alpha (September 2026) adds a Chromium Embedded Framework runtime (`tauri-runtime-cef`) beside the system-webview runtime, on Windows, macOS and Linux. It ships its own Chromium, so bundles grow by hundreds of megabytes and memory use rises, but it is the same engine class as Obsidian's Electron. Servo/Verso as a Tauri runtime is in limbo for lack of resources. Sources: https://v3.tauri.app/develop/cef/ , https://github.com/orgs/tauri-apps/discussions/15546 .
+
+Native Rust GUI in 2026: still fragmented. gpui has no built-in text input widget; Slint and egui have the best IME and accessibility; iced is Elm-style; Dioxus is pivoting to its Blitz renderer. No native toolkit has a Markdown live-preview editor comparable to CodeMirror 6, and none renders web pages, YouTube embeds or PDFs without embedding a browser engine anyway. Sources: https://blog.wybxc.cc/blog/rust-gui-survey-2026/ , https://www.boringcactus.com/2025/04/13/2025-survey-of-rust-gui-libraries.html .
+
+Implication: the settled requirements (multimedia parity with Obsidian, in-app rendering of URLs, PDF reading, video) need a browser engine somewhere in the app. Obsidian itself is a web view, so the Obsidian-speed target is achievable in one.

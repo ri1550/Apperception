@@ -177,3 +177,15 @@ Open at closure: transport detail (105, partly resolved); frontend language and 
 # Design tree: what ships first (top-level decision 5)
 
 Root: the first deployable project in the Polylith queue, and the order of what follows.
+
+## Round 1 of decision 5 (settled 2026-11-11) and closure of "what ships first"
+
+First slice: create and open a vault; import a Markdown folder; create, edit, rename, trash and restore atoms; title links with autocompletion and create-on-activate; backlinks; tags from body and frontmatter; lexical search with operators; export and the opt-in mirror; the round-trip test green; no LLM feature. Done means: the old vault is imported, the developer writes in Apperception daily and stops opening Obsidian for notes.
+
+Editor: live preview is the main view from the start; the developer never uses source mode. Workspace shape and the first set of views are UI prototyping questions. All multimedia arrives in the source-material slice.
+
+Following slices, reorderable: (2) live preview polish, splits, graph; (3) semantic search, suggested links and tags; (4) source material: PDF and web reading, annotations, extract to atom; (5) synthetic material: indexes, wiki per tag, reports, chat, MCP read-only; (6) resurfacing, gap detection, orphan review; (7) canvas; (8) server and web version.
+
+Prototypes and ADRs are scheduled only when needed, not up front (BSSN). The template's `greeting` example bricks and spec domain are deleted when the first real brick lands.
+
+All five top-level decisions are closed. Next: agree the domain list and the brick list (see `domain-and-brick-plan.md`).

@@ -15,6 +15,7 @@ An atom may refer to source material by link but never contains it, and never co
 Nothing yet.
 
 ## Open questions
+- OPEN: Which protections against silent overwrite are rules: a save writes only to the atom the edit was made in and switching atoms flushes or discards pending saves first; a save never replaces content the app has not read since it was last written, and on a mismatch the user sees both versions; every save keeps the previous content recoverable. Raised 2026-11-19 after Atomic overwrote one note with another's content during a switch.
 - OPEN: What form the ID takes (a timestamp-derived value, a random identifier, or another scheme); only immutability is settled (ledger 24).
 - OPEN: What history an atom keeps (every revision, periodic snapshots, or none) and how it is exposed; this must be settled before the first real vault is written, because it cannot be added for past edits (ledger 75).
 - OPEN: The exact title constraints: the forbidden characters (filename-unsafe on any OS plus `#`, `^`, `|`) and the length ceiling, enforced at creation and rename (ledger 84).

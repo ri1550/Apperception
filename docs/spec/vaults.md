@@ -15,6 +15,7 @@ The cache is derived from the knowledge base and can be deleted at any time; the
 Nothing yet.
 
 ## Open questions
+- OPEN: Reopened 2026-11-19 after a data-loss incident in Atomic. Whether the source of truth stays the database (decision 1 as settled) or becomes a flat folder of `.md` files with the database beside it holding only the cache, history, and synthetic material. The choice decides whether other tools (git, file sync, any editor) are recovery paths, and it reshapes plain-text.md, atoms.md, and the vault layout questions below.
 - OPEN: The exact on-disk layout of a vault directory (truth database, cache, internal source files, settings) is a prototype-and-ADR question (ledger 57).
 - OPEN: Whether the cache lives in its own file beside the truth database or in tables inside it (ledger 59).
 - OPEN: Where internal source files are stored once source material exists: blobs in the database, content-addressed files beside it, or elsewhere (ledger 58).

@@ -213,3 +213,5 @@ Landed as vaults rules 6 to 17: adoption flattens every Markdown file into the r
 Fact found for rule 9: Obsidian's notice reads "has been modified externally, merging changes automatically"; the merge happens inside a short window before Obsidian's own save and users have reported cropped words and old versions restored, with an open feature request for a prompt or toggle (forum threads 14874, 111594, 26090). Recorded as an OPEN line beside rule 9.
 
 New open question: ledger 123 ("blind to folder structure") conflicts with ledger 71 (folder path becomes tag path); recorded in tags.md for the developer.
+
+Settled (2026-11-20): a setting replaces the automatic merge with a side-by-side choice; automatic is the default (vaults rule 18). Folder paths of adopted files are discarded and never become tags (vaults rule 19); ledger 71 is superseded. The vault layout is `Notes/` (flat `.md` files), `Attachments/`, other folders deferred, and `.apperception/`; rules 1, 6 and 8 reworded to say so, and ledger 58 (where source files live) is answered: `Attachments`.

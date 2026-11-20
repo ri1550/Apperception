@@ -1,7 +1,7 @@
 # Atoms
 ## Purpose
 An [atom](00-glossary.md) is the building block of the [knowledge base](00-glossary.md): one unit of the user's own understanding, written only by the user. Nothing a model writes is ever an atom.
-An atom is one Markdown file in the vault's root. The file is the truth; the app reads it, writes it, and never holds a copy that outranks it. This domain covers what the file contains, the atom's identity and [title](00-glossary.md), its lifecycle (create, edit, rename, trash, restore, purge), and the protections that keep a save from destroying work.
+An atom is one Markdown file in the vault's [Notes folder](00-glossary.md). The file is the truth; the app reads it, writes it, and never holds a copy that outranks it. This domain covers what the file contains, the atom's identity and [title](00-glossary.md), its lifecycle (create, edit, rename, trash, restore, purge), and the protections that keep a save from destroying work.
 
 ## Vocabulary
 **Frontmatter** — the YAML block at the top of an atom's file that carries its properties.
@@ -22,6 +22,5 @@ Nothing yet.
 - OPEN: The exact title constraints: the forbidden characters (filename-unsafe on any OS plus `#`, `^`, `|`) and the length ceiling, enforced at creation and rename (ledger 84).
 - OPEN: Whether title uniqueness is case-insensitive, which the filesystems of macOS and Windows force.
 - OPEN: Whether `created` and `modified` live in frontmatter, come from the file's own timestamps, or both, given that an external editor updates the file's timestamp but not its frontmatter.
-- OPEN: What the app does with a Markdown file that appears in the vault root without an `id`: assign one and write it, or treat it as not yet an atom.
 - OPEN: Where trashed atoms go (a `.trash` folder in the vault as Obsidian offers, the system trash, or inside `.apperception`) and the default retention period (ledger 76).
 - OPEN: Whether an atom with an empty body is allowed.

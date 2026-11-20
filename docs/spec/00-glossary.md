@@ -10,7 +10,7 @@ Every term more than one domain uses, defined once. Domain files link here and n
 **Tag** — a word in an atom's `tags` property or body, starting with `#` in the body, that groups atoms and may nest with `/`. See [tags.md](tags.md).
 **Trashed** — the state of an atom the user has deleted but that can still be restored until its retention period ends. See [atoms.md](atoms.md).
 **Cache** — everything the database rebuilds from the files and can delete without losing anything the user wrote: link maps, tag counts, headings, blocks, the search index. See [vaults.md](vaults.md).
-**Database** — the store inside a vault's `.apperception` folder that holds the cache, history, and synthetic material; never the truth about an atom. See [vaults.md](vaults.md).
+**Database** — the store inside a vault's `.apperception` folder that holds the cache and nothing else, so it can always be rebuilt from the files. See [vaults.md](vaults.md).
 **Registry** — the list of vaults an installation knows about, kept outside any vault, together with global settings. See [vaults.md](vaults.md).
 **View** — one way of displaying content in the workspace, such as the editor, search results, or backlinks. See [workspace.md](workspace.md).
 **Command** — a named action the user can run from the command palette, a hotkey, or a menu. See [commands.md](commands.md).

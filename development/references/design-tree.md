@@ -205,3 +205,11 @@ Files are the truth. A vault is a flat folder of `.md` files, one per atom, with
 Addendum (2026-11-20). The developer sees `.apperception` exactly as Obsidian's `.obsidian`: a folder of JSON files recording how the vault is set up and used, plus the database. The database can be deleted without losing a note, because it is built and rebuilt from the notes; deleting the whole folder loses the settings and whatever value the database adds until it is rebuilt. Open: whether history and synthetic material, which cannot be rebuilt from the notes, live inside that rebuildable database or beside it.
 
 Settled (2026-11-20): option A. The database is cache only and always rebuildable; history and synthetic material are durable stores inside `.apperception` outside the database. Landed as vaults rules 1 to 3, the first numbered rules in the spec.
+
+## Vaults round (settled 2026-11-20)
+
+Landed as vaults rules 6 to 17: adoption flattens every Markdown file into the root and keeps no folder structure; adoption writes an ID into files that lack one; a file appearing without an ID gets one when first seen; external changes to an open file are merged into the editor automatically with a notice, as Obsidian does; the app never writes a file it has not read since the last change; a missing vault folder stays registered as unavailable with a locate action; a missing `.apperception` is recreated and a damaged one repaired silently with no backups kept; the registry is a JSON file in the configuration directory; a vault opens within three seconds with indexing in the background; the vault name is the folder name; creation needs a new or empty folder, otherwise it is adoption; unsupported files are ignored, never modified, hidden by default with a setting to show them.
+
+Fact found for rule 9: Obsidian's notice reads "has been modified externally, merging changes automatically"; the merge happens inside a short window before Obsidian's own save and users have reported cropped words and old versions restored, with an open feature request for a prompt or toggle (forum threads 14874, 111594, 26090). Recorded as an OPEN line beside rule 9.
+
+New open question: ledger 123 ("blind to folder structure") conflicts with ledger 71 (folder path becomes tag path); recorded in tags.md for the developer.

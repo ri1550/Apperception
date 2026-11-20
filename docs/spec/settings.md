@@ -1,6 +1,6 @@
 # Settings
 ## Purpose
-Settings live in two scopes: global, in the [registry](00-glossary.md), and per [vault](00-glossary.md), in the vault. This domain owns which setting lives where, how the two scopes resolve, and the settings view. What each setting means belongs to the domain that uses it.
+Settings live in two scopes: global, in the [registry](00-glossary.md), and per [vault](00-glossary.md), in the vault's `.apperception` folder. This domain owns which setting lives where, how the two scopes resolve, and the settings view. What each setting means belongs to the domain that uses it.
 
 ## Vocabulary
 Nothing yet.

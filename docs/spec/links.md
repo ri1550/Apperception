@@ -17,7 +17,7 @@ Links are directed. For each atom the vault knows its outgoing links and its bac
 Nothing yet.
 
 ## Open questions
-- OPEN: Whether a link or embed whose target has a file extension (for example `![[photo.png]]` from an imported vault) is an unresolved atom link that creates an atom on activation, or a source reference that is preserved but never created and ignored by the orphaned computation until source material exists.
+- OPEN: Whether a link or embed whose target has a file extension (for example `![[photo.png]]` from an adopted Obsidian vault) is an unresolved atom link that creates an atom on activation, or a source reference that is preserved but never created and ignored by the orphaned computation until source material exists.
 - OPEN: Whether links to or from a trashed atom count for backlinks and for orphaned status.
 - OPEN: Whether title matching in links is case-insensitive, as it is in Obsidian.
 - OPEN: What a link to a heading or block does when the target atom exists but the anchor does not.

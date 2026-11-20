@@ -7,7 +7,7 @@ This domain covers the life of a vault (create, open, adopt, close), the [regist
 **Adopt** — open an existing folder of Markdown files as a vault for the first time.
 
 ## Data
-A vault knows its location on disk, its name, and when it was last opened. Its root holds the atoms as Markdown files, one file per atom, with no subfolders for atoms. An `.apperception` folder at the root holds the vault's settings and the database. Nothing in one vault refers to anything in another vault.
+A vault knows its location on disk, its name, and when it was last opened. Its root holds the atoms as Markdown files, one file per atom, with no subfolders for atoms. An `.apperception` folder at the root, like Obsidian's `.obsidian`, holds the vault's settings as plain JSON files that describe how the vault is set up and used, and the database. Nothing in one vault refers to anything in another vault.
 The registry lives outside every vault and lists each known vault with its location and last-opened time; it also holds global settings. Removing a vault from the registry does not touch the vault's folder.
 The database holds three kinds of thing. The cache is rebuilt from the files whenever it is missing or stale. History is every revision of every atom the app has observed; it is durable but never the current truth. Synthetic material is durable, regenerable at model cost, and never the truth.
 Deleting the `.apperception` folder loses no atom. It loses history and synthetic material; the cache is rebuilt on the next open.
@@ -16,7 +16,8 @@ Deleting the `.apperception` folder loses no atom. It loses history and syntheti
 Nothing yet.
 
 ## Open questions
-- OPEN: The layout inside `.apperception`: one database file or several (cache, history, synthetic, each separately deletable), and whether settings are plain files, as Obsidian's `.obsidian/*.json` are, or rows in the database (ledger 59).
+- OPEN: Whether the database is strictly rebuildable from the files (cache only, so deleting it costs nothing but time) with history and synthetic material kept as separate durable stores inside `.apperception`, or one store whose deletion also loses history and synthetic material (ledger 59).
+- OPEN: The layout inside `.apperception`: one database file or several, and the names and shapes of the settings files (ledger 59).
 - OPEN: Where source material files live: a `sources` folder beside the atoms, inside `.apperception`, or elsewhere (ledger 58).
 - OPEN: What adopting a folder that contains subfolders does: refuse, move every file to the root and record folder paths as tags (renaming on title collision), or tolerate subfolders read-only.
 - OPEN: What adopting does with files that lack an `id` in frontmatter: assign one and write it into the file, or leave the file untouched until the user edits it.

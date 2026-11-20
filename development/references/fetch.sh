@@ -15,4 +15,5 @@ cd Obsidian
 for repo in obsidian-api obsidian-developer-docs obsidian-help obsidian-sample-plugin; do
   [ -d "$repo" ] || git clone --depth 1 "https://github.com/obsidianmd/${repo}.git" "$repo"
 done
+[ -d obsidian-omnisearch ] || git clone --depth 1 https://github.com/scambier/obsidian-omnisearch.git
 echo "done"

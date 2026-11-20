@@ -13,3 +13,4 @@ Third-party material Apperception is built against. Nothing here is part of the 
 - `obsidian-sample-plugin/` — https://github.com/obsidianmd/obsidian-sample-plugin. Minimal plugin, shows the plugin lifecycle.
 
 Obsidian is proprietary. Its binaries are here for study only and must never be redistributed or copied from.
+- `obsidian-omnisearch/` — https://github.com/scambier/obsidian-omnisearch (v1.32.0). Community search plugin named as a retrieval reference. GPL-3: study only, nothing may be copied into Apperception (MIT).

@@ -215,3 +215,7 @@ Fact found for rule 9: Obsidian's notice reads "has been modified externally, me
 New open question: ledger 123 ("blind to folder structure") conflicts with ledger 71 (folder path becomes tag path); recorded in tags.md for the developer.
 
 Settled (2026-11-20): a setting replaces the automatic merge with a side-by-side choice; automatic is the default (vaults rule 18). Folder paths of adopted files are discarded and never become tags (vaults rule 19); ledger 71 is superseded. The vault layout is `Notes/` (flat `.md` files), `Attachments/`, other folders deferred, and `.apperception/`; rules 1, 6 and 8 reworded to say so, and ledger 58 (where source files live) is answered: `Attachments`.
+
+## Atoms round (settled 2026-11-20)
+
+Landed as atoms rules 1 to 5: the title character set and 200-character ceiling, enforced at creation and rename; case-insensitive uniqueness; trash in `.apperception/trash` with 30-day default retention and automatic purge; empty bodies allowed; history as snapshots over time with user-set length. Deferred by the developer: the overwrite protections (testing), the write method (leans direct write like Obsidian; prototype and ADR), the ID form (prototype and ADR), what triggers a snapshot. The developer does not know how to answer created versus modified (140); it stays open. Consequence noted in vaults Data: trashed atoms live inside `.apperception`, so deleting that folder loses them.

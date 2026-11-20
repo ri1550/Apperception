@@ -16,6 +16,8 @@ Deleting the database loses nothing but rebuild time. Deleting the whole `.apper
 1. A vault is a folder of Markdown files, one per atom, with an `.apperception` folder inside it holding the vault's settings as plain files and its database.
 2. The database holds only what can be rebuilt from the vault's files; deleting it loses nothing the user wrote and nothing the app cannot rebuild.
 3. History and synthetic material are kept inside `.apperception` outside the database, and deleting them loses only history and synthetic material, never an atom.
+4. A user may have any number of vaults, and nothing in one vault refers to anything in another.
+5. The registry of vaults lives outside every vault, and removing a vault from the registry leaves its folder untouched.
 
 ## Open questions
 - OPEN: The layout inside `.apperception`: the database file, the history store, the synthetic store (synthetic material as Markdown files with provenance in frontmatter is the candidate), and the names and shapes of the settings files (ledger 59).
